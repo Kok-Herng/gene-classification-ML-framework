@@ -1,4 +1,4 @@
-# gene-classification-ML-framework
+# A Proposed Machine Learning Framework for The Classification of Genes Associated with Abiotic Stress-Resistant Traits in Rice
 This research is the Final Year Project for my BSc in Bioinformatics. For this research, I will be looking at machine learning-based predictive model in classification genes and SNPs that are related to abiotic stress-resistant traits in rice.<br/><br/>
 
 **Research Aim and Objective** <br/>
