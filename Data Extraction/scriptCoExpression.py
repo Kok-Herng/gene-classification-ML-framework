@@ -1,3 +1,5 @@
+#script to extract and merge co-expression data from multiple csv files into single file
+
 import pandas as pd
 import glob
 import os
