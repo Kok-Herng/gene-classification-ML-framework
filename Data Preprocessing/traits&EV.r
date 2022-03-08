@@ -36,3 +36,5 @@ write_xlsx(dfHeat,'heatMerged.xlsx')
 write_xlsx(dfSalt,'saltMerged.xlsx')
 write_xlsx(dfStressResponse,'stressResponseMerged.xlsx')
 write_xlsx(dfSubmergency,'submergencyMerged.xlsx')
+#merging of these output files above was done manually in Excel
+#"traits&EV.xlsx" is the combination with each sheets representing a trait
