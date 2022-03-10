@@ -57,7 +57,3 @@ for file in os.listdir(os.getcwd()): #for every file in current working director
 		writer.writerows(data) #write all data rows
 		
 		print(cnt)
-        
-		#KIV
-		#remove header rows for second iteration onwards
-		#ev part is buggy
