@@ -1,5 +1,3 @@
-#script to extract and merge expression value data from multiple csv files into single file
-
 import string
 import re
 import csv
