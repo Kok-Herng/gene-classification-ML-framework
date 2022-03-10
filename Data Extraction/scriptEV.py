@@ -1,3 +1,5 @@
+#script to extract and merge multiple Expression Value files into 1
+
 import string
 import re
 import csv
