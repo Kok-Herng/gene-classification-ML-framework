@@ -1,7 +1,7 @@
 library(tidyverse)
 library(openxlsx)
 
-rawFeatures <- read_excel("C:/Users/Bioinfo/Desktop/kok/OneDrive - Universiti Malaya/Final Year Project/Personal Laptop/Masterlists/rawFeatures.xlsx")
+rawFeatures <- read_excel("rawFeatures.xlsx")
 
 coexpAndPpi <- function(filename){ #check if gene present in coExp and PPI
   a <- filename %>% 
@@ -19,17 +19,17 @@ coexpAndPpi <- function(filename){ #check if gene present in coExp and PPI
 }
 
 #Co-expression Network----
-coExpression <- read_excel("C:/Users/Bioinfo/Desktop/kok/OneDrive - Universiti Malaya/Final Year Project/Lab Computer/Data Preprocessing/coExpression.xlsx")
+coExpression <- read_excel("coExpression.xlsx")
 tempCoExp <- coexpAndPpi(coExpression)
 rawFeatures$CoExpression <- as.integer(rawFeatures$OsID %in% tempCoExp$OsID) #check if OsID present in coExpression
 
 #PPI Network----
-ppiNetwork <- read_excel("C:/Users/Bioinfo/Desktop/kok/OneDrive - Universiti Malaya/Final Year Project/Lab Computer/Data Preprocessing/ppiNetwork.xlsx")
+ppiNetwork <- read_excel("ppiNetwork.xlsx")
 tempPPI <- coexpAndPpi(ppiNetwork)
 rawFeatures$PPI <- as.integer(rawFeatures$OsID %in% tempPPI$OsID) #check if OsID present in PPI
 
 #ET----
-groupByTraits <- read_excel("C:/Users/Bioinfo/Desktop/kok/OneDrive - Universiti Malaya/Final Year Project/Lab Computer/Data Preprocessing/ET/groupByTraits.xlsx", sheet = "All")
+groupByTraits <- read_excel("groupByTraits.xlsx", sheet = "All")
 
 groupByTraits$`Up/Down regulated` <- make.names(groupByTraits$`Up/Down regulated`) #modify values to valid names
 
@@ -48,6 +48,8 @@ rawFeatures <- groupByTraits %>%
   distinct(.keep_all = T) #keep only unique values
 
 #EV----
+evPattern <- read_excel("evPattern.xlsx", skip = 2)
+
 evPatternTest <- evPattern %>%
   split(evPattern$OsID) %>% #split into list of data frames according to OsID
   map(function(x) summarise(x,across(where(is.character), ~OsID),across(where(is.numeric), sum,na.rm = TRUE))) %>% #add new row for sum value of each column
