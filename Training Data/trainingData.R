@@ -63,7 +63,7 @@ rawFeatures <- groupByTraits %>%
   distinct() #keep only unique values
 
 #EV----
-evPattern <- read.xlsx("evPattern.xlsx", startRow = 3)
+evPattern <- read.xlsx("evPattern.xlsx")
 
 evPatternTest <- evPattern %>%
   split(evPattern$OsID) %>% #split into list of data frames according to OsID
