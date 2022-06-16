@@ -1,4 +1,4 @@
-#class classification (grouping of the same genes together)
+#gene classification (grouping of the same genes together)
 
 library(readxl)
 library(tidyverse)
