@@ -15,6 +15,7 @@ Rice (*Oryza sativa*) data will be collected from MARDI as well as public databa
 <h2>Results</h2>
 <h3>Trait Classification (classification of related traits for each gene)</h3>
 <img alt="Trait" src="https://user-images.githubusercontent.com/99167399/174078066-25e7e2cf-a9b7-4c3a-979f-31d2895a1adf.png" width="75%">
+</br>
 
 <h3>Gene Classification (grouping of the same genes together)</h3>
 <img alt="Gene" src="https://user-images.githubusercontent.com/99167399/174078076-22665ee5-4bdd-4dd1-af9a-3193b5d330de.png" width="75%">
