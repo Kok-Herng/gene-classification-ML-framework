@@ -9,7 +9,7 @@ for file in os.listdir(os.getcwd()): #for every file in current working director
 	if file.endswith(".csv"):
 		
 		fIn = open(file, "r+") #open each csv files in directory
-		fOut = open("outEV.csv","a",newline='') #output each lines to one single output file using append
+		fOut = open("outEV2.csv","a",newline='') #output each lines to one single output file using append
 		#newline='' to disable extra newlines written to output file
 
 		data = [] #empty tuple to store ALL lines
