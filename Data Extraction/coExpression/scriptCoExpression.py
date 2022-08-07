@@ -12,4 +12,4 @@ for csvfile in glob.glob(os.path.join(file_path, "*.csv")):
     data.append(df)
 
 data = pd.concat(data, ignore_index=True)
-data.to_csv("outCoExpression.csv")
+data.to_csv("outCoExpression2.csv")
