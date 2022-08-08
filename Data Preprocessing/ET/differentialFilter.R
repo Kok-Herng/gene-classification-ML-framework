@@ -6,27 +6,27 @@ library(readr)
 library(tidyverse)
 library(openxlsx)
 
-coldDifferential <- read_delim("ebiColdDifferential.tsv", "\t", 
+coldDifferential <- read_delim("Data Extraction/ET/ebiColdDifferential.tsv", "\t", 
                                escape_double = FALSE, 
                                col_types = cols(`t-statistic` = col_double()), 
                                trim_ws = TRUE)
-droughtDifferential <- read_delim("ebiDroughtDifferential.tsv", "\t", 
+droughtDifferential <- read_delim("Data Extraction/ET/ebiDroughtDifferential.tsv", "\t", 
                                   escape_double = FALSE, 
                                   col_types = cols(`t-statistic` = col_double()), 
                                   trim_ws = TRUE)
-heatDifferential <- read_delim("ebiHeatDifferential.tsv", "\t", 
+heatDifferential <- read_delim("Data Extraction/ET/ebiHeatDifferential.tsv", "\t", 
                                escape_double = FALSE, 
                                col_types = cols(`t-statistic` = col_double()), 
                                trim_ws = TRUE)
-saltDifferential <- read_delim("ebiSaltDifferential.tsv", "\t", 
+saltDifferential <- read_delim("Data Extraction/ET/ebiSaltDifferential.tsv", "\t", 
                                escape_double = FALSE, 
                                col_types = cols(`t-statistic` = col_double()), 
                                trim_ws = TRUE)
-stressDifferential <- read_delim("ebiStressDifferential.tsv", "\t", 
+stressDifferential <- read_delim("Data Extraction/ET/ebiStressDifferential.tsv", "\t", 
                                  escape_double = FALSE, 
                                  col_types = cols(`t-statistic` = col_double()), 
                                  trim_ws = TRUE)
-submergencyDifferential <- read_delim("ebiSubmergencyDifferential.tsv", "\t", 
+submergencyDifferential <- read_delim("Data Extraction/ET/ebiSubmergencyDifferential.tsv", "\t", 
                                       escape_double = FALSE, col_types = cols(`t-statistic` = col_double()), 
                                       trim_ws = TRUE)
 
@@ -72,7 +72,7 @@ submergencyFiltered <- submergencyDifferential %>%
 
 sheetNames <- list('Cold' = coldFiltered, 'Drought' = droughtFiltered, 'Heat' = heatFiltered, 'Salt' = saltFiltered,
                    'Stress' = stressFiltered, 'Submergency' = submergencyFiltered)
-write.xlsx(sheetNames, file = 'differentialFiltered.xlsx')
+write.xlsx(sheetNames, file = 'differentialFiltered.xlsx') #write ouput to file
 
 #extra steps done in Excel to further exclude out unrelated rows like
 #other stresses and disease traits

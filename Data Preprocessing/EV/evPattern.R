@@ -3,7 +3,7 @@
 library(tidyverse)
 library(openxlsx)
 
-selectedProj <- read_excel("fltr_sra_fpkm.xlsx", sheet = "fltr_sra_fpkm")
+selectedProj <- read.xlsx("Data Extraction/EV/fltr_sra_fpkm.xlsx", sheet = "fltr_sra_fpkm")
 
 evPatternTemp <- selectedProj %>%
   select(LOC.Gene.ID, Development.stage, Tissue, Expression.value) %>%
@@ -26,6 +26,6 @@ evPattern <- evPatternTemp %>%
   lapply(bind_rows) %>% #convert individual list to dataframe, making a list of dataframes
   bind_rows() %>% #convert the list of dataframes to a single dataframe
   filter_at(-1, any_vars(!is.na(.))) %>% #remove rows with all NA except for LOC.Gene.ID column
-  write.xlsx("evPattern.xlsx")
+  write.xlsx("evPattern.xlsx") #write output to file
 
 #further formatting is done in Excel, ie rename column names and merge tissue
