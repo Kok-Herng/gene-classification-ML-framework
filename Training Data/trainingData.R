@@ -21,7 +21,7 @@ coexpAndPpi <- function(filename){ #check if gene present in coExp and PPI
 }
 
 #Co-expression Network----
-coExpression <- read.xlsx("Data Preprocessing/coExpression.xlsx")
+coExpression <- read.xlsx("Data Curation/coExpression.xlsx")
 tempCoExp <- coexpAndPpi(coExpression)
 rawFeatures$CoExpression <- as.integer(rawFeatures$OsID %in% tempCoExp$OsID) #check if OsID present in coExpression
 
@@ -40,13 +40,13 @@ rawFeatures <- rawFeatures %>%
   mutate_all(~replace(., is.na(.), 0)) #replace NA with 0
 
 #PPI Network----
-ppiNetwork <- read.xlsx("Data Preprocessing/ppiNetwork.xlsx")
+ppiNetwork <- read.xlsx("Data Curation/ppiNetwork.xlsx")
 tempPPI <- coexpAndPpi(ppiNetwork)
 rawFeatures$PPI <- as.integer(rawFeatures$OsID %in% tempPPI$OsID) #check if OsID present in PPI
 
 #ET----
-groupByTraits <- read.xlsx("Data Preprocessing/ET/groupByTraits.xlsx", sheet = "All")
-traits <- read.xlsx("Data Preprocessing/ET/groupByTraits.xlsx", sheet = "Traits")
+groupByTraits <- read.xlsx("Data Curation/ET/groupByTraits.xlsx", sheet = "All")
+traits <- read.xlsx("Data Curation/ET/groupByTraits.xlsx", sheet = "Traits")
 
 groupByTraits <- groupByTraits %>%
   mutate(ET = case_when(
@@ -63,7 +63,7 @@ rawFeatures <- groupByTraits %>%
   distinct() #keep only unique values
 
 #EV----
-evPattern <- read.xlsx("Data Preprocessing/EV/evPattern.xlsx")
+evPattern <- read.xlsx("Data Curation/EV/evPattern.xlsx")
 
 evPatternTest <- evPattern %>%
   split(evPattern$OsID) %>% #split into list of data frames according to OsID
