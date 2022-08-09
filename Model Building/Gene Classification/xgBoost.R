@@ -8,7 +8,7 @@ library(xgboost)
 library(doParallel)
 library(pROC)
 
-trainingData <- read_excel("trainingData.xlsx")
+trainingData <- read_excel("Training Data/trainingData.xlsx")
 
 dataClass <- trainingData %>%
   group_by(OsID) %>%

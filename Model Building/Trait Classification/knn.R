@@ -6,7 +6,7 @@ library(caret)
 library(doParallel)
 library(pROC)
 
-trainingData <- read_excel("trainingData.xlsx")
+trainingData <- read_excel("Training Data/trainingData.xlsx")
 
 dataTrait <- trainingData %>%
   select(-c(OsID,Class)) %>% #exclude OsID and Class column
