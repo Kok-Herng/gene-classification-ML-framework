@@ -5,7 +5,7 @@ library(openxlsx)
 
 rawFeatures <- read.xlsx("rawFeatures.xlsx")
 
-coexpAndPpi <- function(filename){ #check if gene present in coExp and PPI
+coexpAndPpi <- function(filename){ #combine genes vertically
   a <- filename %>% 
     select(a_OsID) %>%
     rename(OsID = a_OsID)
@@ -14,7 +14,7 @@ coexpAndPpi <- function(filename){ #check if gene present in coExp and PPI
     select(b_OsID) %>%
     rename(OsID = b_OsID)
   
-  temp <- rbind(a,b) %>% #select and merge gene a and b together
+  temp <- rbind(a,b) %>% #combine gene a and b vertically into one column
     distinct() #remove duplicates
   
   return(temp)
@@ -58,8 +58,8 @@ rawFeatures <- groupByTraits %>%
   right_join(rawFeatures) %>% #keep all genes from rawFeatures
   mutate_at(vars(log_2.fold.change,ET), ~replace_na(., 0)) %>% #replace NAs from log_2 fold change and ET to 0 (no expression)
   arrange(OsID) %>% #sort OsID in ascending order
-  mutate(Class = as.integer(fct_inorder(OsID))) %>% #labeling according to OsID
-  left_join(traits) %>% #labeling according to traits
+  mutate(Class = as.integer(fct_inorder(OsID))) %>% #add new column "Class"
+  left_join(traits) %>% #add new column "Trait"
   distinct() #keep only unique values
 
 #EV----
