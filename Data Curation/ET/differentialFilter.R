@@ -72,7 +72,7 @@ submergencyFiltered <- submergencyDifferential %>%
 
 sheetNames <- list('Cold' = coldFiltered, 'Drought' = droughtFiltered, 'Heat' = heatFiltered, 'Salt' = saltFiltered,
                    'Stress' = stressFiltered, 'Submergency' = submergencyFiltered)
-write.xlsx(sheetNames, file = 'differentialFiltered.xlsx') #write ouput to file
+write.xlsx(sheetNames, file = 'differentialFiltered.xlsx') #write output to file
 
 #extra steps done in Excel to further exclude out unrelated rows like
 #other stresses and disease traits
