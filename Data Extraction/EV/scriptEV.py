@@ -1,6 +1,5 @@
 #script to extract and merge multiple Expression Value files into 1
 
-import string
 import re
 import csv
 import os
@@ -12,7 +11,7 @@ for file in os.listdir(os.getcwd()): #for every file in current working director
 		fOut = open("outEV2.csv","a",newline='') #output each lines to one single output file using append
 		#newline='' to disable extra newlines written to output file
 
-		data = [] #empty tuple to store ALL lines
+		data = [] #empty list to store ALL lines
 		cnt = 0
 
 		lines = fIn.readlines() #read all lines
@@ -26,14 +25,14 @@ for file in os.listdir(os.getcwd()): #for every file in current working director
 			#by multiple any characters (2nd line onwards in file)
 			
 			if head: #true
-				tempRow = [] #empty tuple to store ONE line at a time, revert back to empty after each line
+				tempRow = [] #empty list to store ONE line at a time, revert back to empty after each line
 				headerLine = head.group(1) #return the SECOND subgroup for the re match (in this case, LOCxxxxx and so on)
 				print (headerLine)
 
-				terms = headerLine.split(',') #split string into list (tuple?) with comma as seperator
+				terms = headerLine.split(',') #split string into list with comma as seperator
 				print(terms)	
 
-				geneId = terms[1]; geneId = geneId[1:-1] #extract the SECOND item in tuple and remove " at the beginning and end
+				geneId = terms[1]; geneId = geneId[1:-1] #extract the SECOND item in list and remove " at the beginning and end
 				tissue = terms[-2]; tissue = tissue[1:-1]
 				developmentStage = terms[-3]; developmentStage = developmentStage[1:-1]
 				
@@ -43,10 +42,10 @@ for file in os.listdir(os.getcwd()): #for every file in current working director
 				else:
 					ev = terms[-1]; ev = ev[1:-1] #remove /r for rest of the lines
 
-				tempRow = [geneId, developmentStage, tissue, ev] #put extracted items into a tuple
+				tempRow = [geneId, developmentStage, tissue, ev] #put extracted items into a list
 				print(tempRow)
 
-				data.append(tempRow) #append the extracted items tuple into another tuple
+				data.append(tempRow) #append the extracted items list into another list
 
 				cnt+=1
 
