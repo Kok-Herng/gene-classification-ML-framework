@@ -11,5 +11,5 @@ for csvfile in glob.glob(os.path.join(file_path, "*.csv")): #find files end with
     df = pd.read_csv(csvfile, encoding="utf-8", delimiter=",") #read csv files as dataframe
     data.append(df) #append to list for each csv file
 
-data = pd.concat(data, ignore_index=True) #concatenate csv files and display continuous index value
+data = pd.concat(data) #concatenate csv files
 data.to_csv("outCoExpression2.csv") #output results to new csv file
