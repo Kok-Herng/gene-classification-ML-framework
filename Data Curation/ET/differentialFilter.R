@@ -70,8 +70,7 @@ submergencyFiltered <- submergencyDifferential %>%
     `log_2 fold change` < 0 ~ 'Down regulated'
   ))
 
-sheetNames <- list('Cold' = coldFiltered, 'Drought' = droughtFiltered, 'Heat' = heatFiltered, 'Salt' = saltFiltered,
-                   'Stress' = stressFiltered, 'Submergency' = submergencyFiltered)
+sheetNames <- list('Cold' = coldFiltered, 'Drought' = droughtFiltered, 'Heat' = heatFiltered, 'Salt' = saltFiltered, 'Stress' = stressFiltered, 'Submergency' = submergencyFiltered)
 write.xlsx(sheetNames, file = 'differentialFiltered.xlsx') #write output to file
 
 #extra steps done in Excel to further exclude out unrelated rows like
