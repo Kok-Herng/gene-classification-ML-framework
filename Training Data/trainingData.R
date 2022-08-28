@@ -25,12 +25,12 @@ coExpression <- read.xlsx("Data Curation/coExpression.xlsx")
 tempCoExp <- coexpAndPpi(coExpression)
 rawFeatures$CoExpression <- as.integer(rawFeatures$OsID %in% tempCoExp$OsID) #check if OsID present in coExpression
 
-aOSID <- coExpression %>%
+aOSID <- coExpression %>% #extract a_OsID with pcc
   distinct() %>%
   select(a_OsID,pcc) %>%
   rename(OsID = a_OsID)
 
-bOSID <- coExpression %>%
+bOSID <- coExpression %>% #extract b_OsID with pcc
   distinct() %>%
   select(b_OsID,pcc) %>%
   rename(OsID = b_OsID)
@@ -48,12 +48,10 @@ rawFeatures$PPI <- as.integer(rawFeatures$OsID %in% tempPPI$OsID) #check if OsID
 groupByTraits <- read.xlsx("Data Curation/ET/groupByTraits.xlsx", sheet = "All")
 traits <- read.xlsx("Data Curation/ET/groupByTraits.xlsx", sheet = "Traits")
 
-groupByTraits <- groupByTraits %>%
+rawFeatures <- groupByTraits %>%
   mutate(ET = case_when(
     `Up/Down.regulated`=="Down regulated" ~ 1,
-    `Up/Down.regulated`=="Up regulated" ~ 2))
-
-rawFeatures <- groupByTraits %>%
+    `Up/Down.regulated`=="Up regulated" ~ 2)) %>%
   select(OsID,log_2.fold.change,ET) %>%
   right_join(rawFeatures) %>% #keep all genes from rawFeatures
   mutate_at(vars(log_2.fold.change,ET), ~replace_na(., 0)) %>% #replace NAs from log_2 fold change and ET to 0 (no expression)
